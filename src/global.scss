@@ -1,0 +1,18 @@
+$mainColor:rgb(10, 10, 10);
+$fontColor:white;
+$secondaryColor:rgb(250, 94, 4);
+
+$moblieWidth : 414px;
+$tabWidth : 912px;
+
+@mixin mobile {
+    @media (max-width:#{$moblieWidth}){
+        @content
+    }
+}
+@mixin tab {
+    @media (max-width:#{$tabWidth}){
+        @content
+    }
+}
+
