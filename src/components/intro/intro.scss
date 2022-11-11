@@ -117,10 +117,10 @@
             float: left;
 
             @include mobile{
-              align-items: flex-start ;
+              align-items: center ;
             }
             @include tab{
-              align-items: flex-start ;
+              align-items: center ;
             }
 
             img{

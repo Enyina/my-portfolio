@@ -80,6 +80,13 @@
                     align-items: center;
                     justify-content: center;
 
+                    @include mobile{
+                      flex: 0.8;
+                       }
+                     @include tab{
+                        flex: 0.8;
+                       }
+
                     .leftContainer{
                         width: 90%;
                         height: 70%;
@@ -141,6 +148,13 @@
                     align-items: center;
                     justify-content: center;
                     overflow: hidden;
+
+                    @include mobile{
+                        flex: 1.2;
+                         }
+                       @include tab{
+                          flex: 1.2;
+                         }
 
                     img{
                         width: 400px;
