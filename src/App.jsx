@@ -7,10 +7,10 @@ import Portfolio from './components/portfolio/Portfolio';
 import About from './components/about/About';
 import Works from './components/works/Works';
 import Contact from './components/contact/Contact';
+import ProjectPage from './portfolio/ProjectPage';
+import { readProjectRoute } from './portfolio/routing.mjs';
 import { publishedSectionDefaults, resolveVisibleSections } from './portfolio/sections.mjs';
 
-// Existing React components and their styling stay intact until the
-// authoritative desktop/mobile design files are available.
 const sectionComponents = {
   projects: Portfolio,
   experience: Works,
@@ -20,19 +20,25 @@ const sectionComponents = {
 
 function App() {
   const [openMenu, setOpenMenu] = useState(false);
-  const visibleSections = resolveVisibleSections(publishedSectionDefaults);
+  const route = readProjectRoute(window.location.pathname);
 
+  if (route.type !== 'home') {
+    return <ProjectPage slug={route.type === 'project' ? route.slug : null} />;
+  }
+
+  const visibleSections = resolveVisibleSections(publishedSectionDefaults);
   return (
     <div className="App">
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <Topbar openMenu={openMenu} setOpenMenu={setOpenMenu} />
       <Menu openMenu={openMenu} setOpenMenu={setOpenMenu} />
-      <div className="sections">
+      <main className="sections" id="main-content">
         <Intro />
         {visibleSections.map((id) => {
           const Section = sectionComponents[id];
           return Section ? <Section key={id} /> : null;
         })}
-      </div>
+      </main>
     </div>
   );
 }
