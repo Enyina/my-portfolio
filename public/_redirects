@@ -1,0 +1,2 @@
+# Netlify SPA fallback for public project detail links. Real assets take precedence.
+/* /index.html 200

@@ -1,0 +1,16 @@
+name: Portfolio foundation checks
+on:
+  pull_request:
+  push:
+    branches:
+      - feat/dynamic-portfolio-foundation
+jobs:
+  published-content:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Test published projections
+        run: node --test tests/*.test.mjs
